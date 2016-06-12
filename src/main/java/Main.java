@@ -20,7 +20,6 @@ public class Main {
     }
 }
 
-
 class Solver {
     private Scanner in;
     private PrintWriter out;
