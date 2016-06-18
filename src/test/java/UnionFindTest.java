@@ -31,5 +31,9 @@ public class UnionFindTest {
         assertEquals(2, unionFind.getRoot(2));
         hasMerged = unionFind.merge(0, 1);
         assertEquals(false, hasMerged);
+        hasMerged = unionFind.merge(2, 0);
+        assertEquals(true, hasMerged);
+        assertEquals(0, unionFind.getRoot(0));
+        assertEquals(0, unionFind.getRoot(2));
     }
 }
