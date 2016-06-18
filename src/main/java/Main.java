@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Main {
@@ -112,4 +113,36 @@ class FastScanner implements Scanner {
     }
 
     public double nextDouble() { return Double.parseDouble(next());}
+}
+
+class UnionFind {
+    private int[] data;
+
+    UnionFind(int size) {
+        data = new int[size];
+        Arrays.fill(data, -1);
+    }
+
+    int getRoot(int x) {
+        return data[x] < 0 ? x : (data[x] = getRoot(data[x]));
+    }
+
+    int getSize(int x) {
+        return -data[getRoot(x)];
+    }
+
+    boolean merge(int x, int y) {
+        x = getRoot(x);
+        y = getRoot(y);
+        if (x != y) {
+            if (data[y] < data[x]) {
+                int tmp = x;
+                x = y;
+                y = tmp;
+            }
+            data[x] += data[y];
+            data[y] = x;
+        }
+        return x != y;
+    }
 }
